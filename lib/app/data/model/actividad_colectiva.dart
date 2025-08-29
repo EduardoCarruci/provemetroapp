@@ -41,14 +41,17 @@ class ActividadColectiva {
 
   factory ActividadColectiva.fromJson(Map<String, dynamic> json) {
     return ActividadColectiva(
-      idActividadColectiva: json['idActividadColectiva'],
-      nombreActividadColectiva: json['nombreActividadColectiva'],
-      descripcion: json['descripcion'],
-      imagen: json['imagen'],
-      entrenadorResponsable: json['entrenadorResponsable'],
-      sociosInscritos: List<int>.from(json['sociosInscritos']),
-      diaClase: json['diaClase'],
-      horaClase: json['horaClase'],
+      idActividadColectiva: json['_idActividadColectiva'] ?? 0,
+      nombreActividadColectiva: json['_nombreActividadColectiva'] ?? '',
+      descripcion: json['_descripcion'] ?? '',
+      imagen: json['_imagen'] ?? '',
+      entrenadorResponsable: json['_entrenadorResponsable'] ?? 0,
+      sociosInscritos: (json['_sociosInscritos'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList() ??
+          [],
+      diaClase: json['_diaClase'] ?? '',
+      horaClase: json['_horaClase'] ?? '',
     );
   }
 }
